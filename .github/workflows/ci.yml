@@ -1,0 +1,10 @@
+name: ci
+on: [push]
+jobs:
+  continue-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: echo "Build"
+      - name: Security Scan
+        run: echo "Security Scan"
