@@ -1,0 +1,32 @@
+name: cd
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deploy environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+        - dev
+        - int
+        - sys
+      version:
+        description: 'Build Version'
+        required: true
+
+env:
+  ENVIRONMENT: ${{ inputs.environment }}
+  BUILD_VERSION: ${{ inputs.version }}
+
+jobs:
+  continue-delivery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish
+        run: echo "Publish app:$BUILD_VERSION"
+      - name: Deploy
+        run: echo "Deploy app:$BUILD_VERSION in $ENVIRONMENT"
+      
+
